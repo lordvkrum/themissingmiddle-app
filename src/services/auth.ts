@@ -28,8 +28,9 @@ export class AuthService {
 				password: 'password',
 				type: 'local'
 			}).then((user) => {
+				this._app.service('users').patch(user.data._id, {phoneNumber: '+14108810577'}).catch(console.log);
 				this.currentUser.next(user.data);
-				observer.next(user);
+				observer.next(user.data);
 				observer.complete();
 			});
 		});

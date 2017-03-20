@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ statusTitle }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content scroll="false">
+	<ion-grid class="call-data">
+	  <ion-row class="call-timer" align-items-end [hidden]="status !== 'answered'">
+	    <ion-col>
+	    	<h1>{{ callTimer }}</h1>
+	    </ion-col>
+	  </ion-row>
+	  <ion-row class="call-contact" align-items-center>
+	    <ion-col>
+	    	<h1>{{ contact.email }}</h1>
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
+	<ion-grid class="call-actions">
+	  <ion-row>
+	    <ion-col class="accept" [hidden]="status !== 'inbound'" (click)="connectCall()">
+	    	<ion-icon ios="ios-call" md="md-call"></ion-icon>
+	    </ion-col>
+	    <ion-col [hidden]="status !== 'answered'" (click)="toggleMicrophone()">
+	    	<ion-icon ios="ios-mic-off" md="md-mic-off" [class.muted]="!microphoneStatus"></ion-icon>
+	    </ion-col>
+	    <ion-col class="reject" [hidden]="status !== 'inbound' && status !== 'answered' && status !== 'outbound'" (click)="rejectCall()">
+	    	<ion-icon ios="ios-close-circle" md="md-close-circle"></ion-icon>
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
+</ion-content>

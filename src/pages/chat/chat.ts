@@ -3,7 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth';
 import { MessageService } from '../../services/message';
-// import { HomePage } from '../../pages/home/home';
+import { TwilioService } from '../../services/twilio';
+import { CallPage } from '../../pages/call/call';
 
 @Component({
 	selector: 'page-chat',
@@ -20,7 +21,22 @@ export class ChatPage implements OnInit {
 		public params: NavParams,
 		private formBuilder: FormBuilder,
 		private auth: AuthService,
-		private message: MessageService) { }
+		private message: MessageService,
+		private twilio: TwilioService) {
+		this.twilio.callStatus.subscribe(
+			result => {
+				const activePage = this.navCtrl.getActive();
+				if (activePage.component.name !== 'ChatPage') {
+					return;
+				}
+				switch (result.status) {
+					case 'inbound':
+					case 'outbound':
+						this.navCtrl.push(CallPage, result);
+						break;
+				}
+			});
+	}
 
 	ngOnInit(): void {
 		this.contact = this.params.data;
@@ -54,6 +70,10 @@ export class ChatPage implements OnInit {
 		this.newMessageText = this.newMessageForm.value.newMessageText;
 		this.message.create(this.newMessageText).subscribe(
 			message => this.newMessageForm.setValue({ newMessageText: '' }));
+	}
+
+	call() {
+		this.twilio.makeCall(this.contact);
 	}
 
 }

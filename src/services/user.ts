@@ -23,6 +23,15 @@ export class UserService {
 		});
 	}
 
+	get(userId) {
+		return Observable.create(observer => {
+			this.service.get(userId).then((user) => {
+				observer.next(user);
+				observer.complete();
+			});
+		});
+	}
+
 	listContacts() {
 		return Observable.create(observer => {
 			this.service.find().then((users) => {

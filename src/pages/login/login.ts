@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthService } from '../../services/auth';
 import { UserService } from '../../services/user';
+import { TwilioService } from '../../services/twilio';
 import { HomePage } from '../../pages/home/home';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginPage implements OnInit {
 
 	constructor(public navCtrl: NavController,
 		private auth: AuthService,
-		private user: UserService) { }
+		private user: UserService,
+		private twilio: TwilioService) { }
 
 	ngOnInit(): void {
 		this.user.list().subscribe(
@@ -22,7 +24,10 @@ export class LoginPage implements OnInit {
 
 	login(user) {
 		this.auth.login(user.email).subscribe(
-			result => this.navCtrl.setRoot(HomePage));
+			user => {
+				this.twilio.start(user._id).subscribe(
+					result => this.navCtrl.setRoot(HomePage));
+			});
 	}
 
 }
