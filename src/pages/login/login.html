@@ -6,14 +6,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content scroll="false">
-	<ion-list>
+<ion-content scroll="false" padding>
+  <ion-list>
     <ion-list-header>
-      <h5>Contac List</h5>
+      <h5>Login with:</h5>
     </ion-list-header>
-    <ion-item *ngFor="let contact of contacts" (click)="chat(contact)">
+    <ion-item *ngFor="let user of users" (click)="login(user)">
       <ion-icon ios="ios-contact" md="md-contact" item-left></ion-icon>
-      {{ contact.email }}
+      {{ user.email }}
     </ion-item>
   </ion-list>
 </ion-content>
