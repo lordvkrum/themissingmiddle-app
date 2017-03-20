@@ -35,12 +35,11 @@ export class AuthService {
 		});
 	}
 
-	// doLogout() {
-	// 	return Observable.create(observer => {
-	// 		this.destroyToken();
-	// 		this.httpBasicAuth.logout();
-	// 		observer.next('');
-	// 		observer.complete();
-	// 	});
-	// }
+	logout() {
+		return Observable.create(observer => {
+			this._app.logout();
+			observer.next('');
+			observer.complete();
+		});
+	}
 }

@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
 		private user: UserService) { }
 
 	ngOnInit(): void {
-		this.user.getUsers().subscribe(
+		this.user.list().subscribe(
 			users => this.users = users);
 	}
 

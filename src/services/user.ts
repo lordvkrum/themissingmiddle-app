@@ -14,7 +14,7 @@ export class UserService {
 			currentUser => this.currentUser = currentUser);
 	}
 
-	getUsers() {
+	list() {
 		return Observable.create(observer => {
 			this.service.find().then((users) => {
 				observer.next(users.data);
@@ -23,7 +23,7 @@ export class UserService {
 		});
 	}
 
-	getContacts() {
+	listContacts() {
 		return Observable.create(observer => {
 			this.service.find().then((users) => {
 				observer.next(users.data.filter(

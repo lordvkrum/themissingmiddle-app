@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ contact.email }}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="call()">
+        <ion-icon ios="ios-call" md="md-call"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content scroll="false">
+  <div #messagesList class="messages">
+    <ion-card *ngFor="let message of messages">
+      <ion-item>
+        <ion-icon ios="ios-contact" md="md-contact" item-left></ion-icon>
+        <h2>{{ message.sentBy.email }}</h2>
+        <p>{{ message.createdAt | moment }}</p>
+      </ion-item>
+      <ion-card-content>
+        <p>{{ message.text }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+	<ion-list class="new-message">
+    <ion-item [formGroup]="newMessageForm">
+      <ion-textarea  placeholder="Write here..." rows="2" formControlName="newMessageText"></ion-textarea>
+      <button ion-button icon-left item-right [disabled]="!newMessageForm.valid" (click)="newMessage()">
+        <ion-icon ios="ios-send" md="md-send"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>
