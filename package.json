@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "homepage": "",
   "scripts": {
-    "install": "npm install -g ionic cordova @ionic/app-scripts typescript",
+    "install": "npm install -g ionic cordova",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
