@@ -47,7 +47,7 @@ export class TwilioService {
       if (!this.callAnswered) {
         this.callStatus.next({
           status: 'outbound',
-          To: 'client:' + connection.message.contactId
+          To: `client:${this.activeConnection.message.contactId}`
         });
       }
     });
@@ -78,8 +78,7 @@ export class TwilioService {
     this.activeConnection = connection;
     this.callStatus.next({
       status: 'inbound',
-      From: this.activeConnection.parameters.From,
-      To: this.activeConnection.parameters.To
+      From: this.activeConnection.parameters.From
     });
   }
 
@@ -142,6 +141,11 @@ export class TwilioService {
 
   toggleMicrophone(status) {
     this.activeConnection.mute(status);
+    // this._twilio.Connection.mute(status);
+  }
+
+  toggleSpeaker(status) {
+    this._twilio.Connection.setSpeaker(status ? 'on' : 'off');
   }
 
 }

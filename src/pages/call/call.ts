@@ -53,7 +53,7 @@ export class CallPage implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.user.get(this.params.data.To.slice(7)).subscribe(
+		this.user.get((this.params.data.To || this.params.data.From).slice(7)).subscribe(
 			user => this.contact = user);
 	}
 
