@@ -1,0 +1,24 @@
+{
+  "name": "themissingmiddle-app",
+  "description": "A quick prototype testing Twilio and Ionic",
+  "keywords": [
+    "ionic",
+    "angular2",
+    "twilio",
+    "chat",
+    "realtime"
+  ],
+  "website": "https://github.com/lordvkrum/themissingmiddle-app",
+  "repository": "https://github.com/lordvkrum/themissingmiddle-app",
+  "logo": "http://s32.postimg.org/4k9q912x1/aar_QEIys.jpg",
+  "success_url": "/",
+  "formation": [
+    {
+      "quantity": 1,
+      "size": "free",
+      "type": "web"
+    }
+  ],
+  "image": "heroku/nodejs",
+  "addons": []
+}
