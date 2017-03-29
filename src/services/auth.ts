@@ -35,20 +35,6 @@ export class AuthService {
 		});
 	}
 
-	register(email, password) {
-		return Observable.create(observer => {
-			this._app.authenticate({
-				email: email,
-				password: password,
-				type: 'local'
-			}).then((user) => {
-				this.currentUser.next(user.data);
-				observer.next(user.data);
-				observer.complete();
-			});
-		});
-	}
-
 	logout() {
 		return Observable.create(observer => {
 			this._app.logout();

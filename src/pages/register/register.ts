@@ -33,7 +33,7 @@ export class RegisterPage implements OnInit {
 		this.password = this.registerForm.value.password;
 		this.user.create(this.email, this.password).subscribe(
 			user => {
-				this.auth.register(this.email, this.password).subscribe(
+				this.auth.login(this.email, this.password).subscribe(
 					user => {
 						this.twilio.start(user._id).subscribe(
 							result => this.navCtrl.setRoot(HomePage));

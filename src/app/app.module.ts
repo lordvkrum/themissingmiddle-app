@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { AppSettings } from './app.settings';
 import { AuthService } from '../services/auth';
 import { UserService } from '../services/user';
+import { ContactService } from '../services/contact';
 import { MessageService } from '../services/message';
 import { TwilioService } from '../services/twilio';
 import { AlertService } from '../services/alert';
@@ -40,6 +41,7 @@ import { CallPage } from '../pages/call/call';
     AppSettings,
     AuthService,
     UserService,
+    ContactService,
     MessageService,
     TwilioService,
     AlertService,
