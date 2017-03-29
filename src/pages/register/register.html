@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content scroll="false" padding>
-  <form [formGroup]="loginForm">
+  <form [formGroup]="registerForm">
     <ion-list>
       <ion-item>
         <ion-label>
@@ -22,9 +22,9 @@
         <ion-input type="password" placeholder="Password" required formControlName="password"></ion-input>
       </ion-item>
     </ion-list>
-    <button ion-button full [disabled]="!loginForm.valid" (click)="doLogin()">Sign in</button>
+    <button ion-button full [disabled]="!registerForm.valid" (click)="doRegister()">Sign up</button>
     <p>
-      <a href="#" (click)="goToRegister()">Go to Register</a>
+      <a href="#" (click)="goToLogin()">Go to Login</a>
     </p>
   </form>
 </ion-content>

@@ -6,8 +6,10 @@ import { AuthService } from '../services/auth';
 import { UserService } from '../services/user';
 import { MessageService } from '../services/message';
 import { TwilioService } from '../services/twilio';
+import { AlertService } from '../services/alert';
 import { MomentPipe } from '../pipes/moment';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 import { HomePage } from '../pages/home/home';
 import { ChatPage } from '../pages/chat/chat';
 import { CallPage } from '../pages/call/call';
@@ -16,6 +18,7 @@ import { CallPage } from '../pages/call/call';
   declarations: [
     MyApp,
     LoginPage,
+    RegisterPage,
     HomePage,
     ChatPage,
     CallPage,
@@ -28,6 +31,7 @@ import { CallPage } from '../pages/call/call';
   entryComponents: [
     MyApp,
     LoginPage,
+    RegisterPage,
     HomePage,
     ChatPage,
     CallPage
@@ -38,6 +42,7 @@ import { CallPage } from '../pages/call/call';
     UserService,
     MessageService,
     TwilioService,
+    AlertService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }]
 })
 export class AppModule { }

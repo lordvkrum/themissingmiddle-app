@@ -21,14 +21,27 @@ export class AuthService {
 		this.app.next(this._app);
 	}
 
-	login(email) {
+	login(email, password) {
 		return Observable.create(observer => {
 			this._app.authenticate({
 				email: email,
-				password: 'password',
+				password: password,
 				type: 'local'
 			}).then((user) => {
-				this._app.service('users').patch(user.data._id, {phoneNumber: '+14108810577'}).catch(console.log);
+				this.currentUser.next(user.data);
+				observer.next(user.data);
+				observer.complete();
+			});
+		});
+	}
+
+	register(email, password) {
+		return Observable.create(observer => {
+			this._app.authenticate({
+				email: email,
+				password: password,
+				type: 'local'
+			}).then((user) => {
 				this.currentUser.next(user.data);
 				observer.next(user.data);
 				observer.complete();

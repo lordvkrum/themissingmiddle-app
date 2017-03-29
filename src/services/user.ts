@@ -32,6 +32,18 @@ export class UserService {
 		});
 	}
 
+	create(email, password) {
+		return Observable.create(observer => {
+			this.service.create({
+				email: email,
+				password: password
+			}).then((user) => {
+				observer.next(user);
+				observer.complete();
+			});
+		});
+	}
+
 	listContacts() {
 		return Observable.create(observer => {
 			this.service.find().then((users) => {
